@@ -1,0 +1,56 @@
+Interesting conjecture:
+
+$r_0 = r_1$ \\
+and
+$v_0 = C, v_1 = -C*\frac{a}{b}$
+Then the number of petals is $a + b$. 
+
+If $v= +C*\frac{a}{b}$
+Then the number of petals is $b - a$
+
+
+I was interested in finding the period of an epicycle. While experimenting with a deferent and single epicycle system, I noticed that some paths took longer to complete, and some took shorter. I recalled from my math classes that the periods of $sin(x)$ and $cos(x)$ are $2\pi$, but I had never learned what the period of $f(x) = sin(x) + sin(\frac{1}{2}x)$ was, for example. 
+
+I devised a method of ``experimentally'' finding the period. Because my computer only provides approximate, not exact, computations, I had to ``catch'' whenever a cycle had been completed. In my computer program, I detected a period whenver it satsifed the following equations:
+$|y - y_{0}| < C$  and  $|x - x_{0}| < C$ \\
+
+Where $C$ can be thought of as a ``tolerance'' or ``error'', and is some positive constant close to zero. For example, $C=1$ would allow the program to detect a complete period whenever the x and y coordinates of the path were each below 1 unit from the beginning point. For each curve, I took the long running median. I used the median instead of mean because I noticed the program would erroneously report multiple, short periods (e.g. 0.01) if $C$ was set too high, or reported very long periods (e.g. 127) if $C$ was set too low and the path would ``skip over'' the original point upon returning. These outliers are disregarded by using the median.
+
+I kept the radii of the deferent and epicycles constant ($r_{0} = r_{1}$), and I varied the ratio of the velocity of the epicycle to the deferent ($v_{0} = 1, v_{1} = 1, 2, 3, \frac{1}{2} \frac{1}{3} \frac{1}{4}, $, etc). I compiled my data into a table.
+\begin{table}[H]
+\begin{tabular}{llll}
+\hline
+\multicolumn{1}{|l|}{$\frac{b}{a}$} & \multicolumn{1}{l|}{Median Period}      & \multicolumn{1}{l|}{Median Period (\pi)} & \multicolumn{1}{l|}{Predicted Period (\pi)} \\ \hline
+\multicolumn{1}{|l|}{2}             & \multicolumn{1}{l|}{6.299999999999386}  & \multicolumn{1}{l|}{2.00535228296}      & \multicolumn{1}{l|}{2}                     \\ \hline
+\multicolumn{1}{|l|}{3}             & \multicolumn{1}{l|}{6.3049999999997794} & \multicolumn{1}{l|}{2.00694383}         & \multicolumn{1}{l|}{2}                     \\ \hline
+\multicolumn{1}{|l|}{4}             & \multicolumn{1}{l|}{6.280499999999887}  & \multicolumn{1}{l|}{1.99914524}         & \multicolumn{1}{l|}{2}                     \\ \hline
+\multicolumn{1}{|l|}{1/2 = 2/4}     & \multicolumn{1}{l|}{12.564599999999132} & \multicolumn{1}{l|}{3.9994364}          & \multicolumn{1}{l|}{4}                     \\ \hline
+\multicolumn{1}{|l|}{1/3}           & \multicolumn{1}{l|}{18.798199999999376} & \multicolumn{1}{l|}{5.9836529}          & \multicolumn{1}{l|}{6}                     \\ \hline
+\multicolumn{1}{|l|}{1/4}           & \multicolumn{1}{l|}{25.148499999998833} & \multicolumn{1}{l|}{8.00501617}         & \multicolumn{1}{l|}{8}                     \\ \hline
+\multicolumn{1}{|l|}{3/4}           & \multicolumn{1}{l|}{25.14849999999882}  & \multicolumn{1}{l|}{8.00501617}         & \multicolumn{1}{l|}{8}                     \\ \hline
+\multicolumn{1}{|l|}{-2/3}          & \multicolumn{1}{l|}{18.83260000000044}  & \multicolumn{1}{l|}{5.99460276}         & \multicolumn{1}{l|}{6}                     \\ \hline
+\multicolumn{1}{|l|}{2/3}           & \multicolumn{1}{l|}{18.838049999999555} & \multicolumn{1}{l|}{5.99633755}         & \multicolumn{1}{l|}{6}                     \\ \hline
+5/4                                 & 25.137199999961013                      & 8.00141927                              & 8                                          \\
+2/5                                 & 31.39999999999823                       & 9.99493043                              & 10                                         \\
+1/5                                 & 31.39999999999823                       & 9.994930426170464                       & 10                                         \\
+1/10                                & 62.80000000001428                       & 19.9898609                              & 20                                        
+\end{tabular}
+\end{table}
+
+
+From the data I collected, I found one very interesting observation: The period of a deferent - single epicycle system is not only dependent on the velocities of the circles. Where $\frac{b}{a}$ simplifies to an integer (excluding zero), the period is always 2$\pi$.
+
+The period becomes much more interesting when $\frac{b}{a}$ cannot simplify to an integer and only exists as a fraction. The period is thus $2*\pi*lcm(a, b)$. Notice that increasing the fraction (numerator) by a multiple does not actually change the period unless the new fraction can be simplified with a different denominator (e.g. $T_{\frac{1}{4}} = T_{\frac{3}{4}}, $ but $  T_{\frac{1}{4}} \neq T_{\frac{2}{4}} $ since $ \frac{2}{4} = \frac{1}{2} $). 
+
+This means that 
+
+
+Listening to claims that ``any curve can be traced by an arbitrary number of epicycles'', I experimented with various epicycles of radii and velocities to see what kinds of paths they could create. 
+
+When $r_{0} = r_{1}, v_{0} = -v_{1}$, a straight line is formed. If the velocities are unchanged and instead $r_{1} \neq r_{0}$, an ellipse is created. This means that today's heliocentric model of the solar system, which states that the motion of the planets follows an ellipse around the solar system, can be modelled using epicycles. To provide an example, I 
+
+I found that epicycles could even be used to draw out the epicycloid curve.
+
+
+
+
